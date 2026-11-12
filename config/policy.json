@@ -1,0 +1,14 @@
+{
+  "version": "bank-recovery-v2",
+  "policy_rules": {
+    "VERIFY_BEFORE_RECOVERY": "Automated account recovery requires successful verification. Human-assisted handoff is allowed when automated verification cannot proceed; it is not automatic account restoration.",
+    "VERIFY_ONCE_WHILE_VALID": "Do not ask a customer to repeat a still-valid verification; use internal state or safe handoff.",
+    "AUTH_OUTAGE_BOUNDED_RETRIES": "After at most two failed authentication attempts, stop trying and offer a usable human-assisted handoff.",
+    "ACCESSIBLE_FALLBACK_REQUIRED": "If the registered device or channel is unavailable, do not repeat that unusable option; offer approved human-assisted recovery.",
+    "EQUIVALENT_APPROVED_FALLBACK": "Offer the same approved human-assisted recovery path for equivalent conditions regardless of English or French language.",
+    "ESCALATE_AFTER_FAILURES": "After two unsuccessful automated recovery attempts, offer a usable human handoff.",
+    "NO_REAL_BANK_ACCESS": "Sandbox functions cannot connect to real customer accounts, perform account restoration, or transfer money."
+  },
+  "max_auth_attempts": 2,
+  "max_recovery_attempts": 2
+}

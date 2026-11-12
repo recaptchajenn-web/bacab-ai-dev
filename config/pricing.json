@@ -1,0 +1,9 @@
+{
+  "version": "hypothetical-cad-v2",
+  "currency": "CAD",
+  "notes": "Fictional Canadian-dollar sandbox price assumptions only. Not current provider prices, converted invoices, exchange rates, or verified ROI.",
+  "model": "synthetic-sandbox-model",
+  "input_cad_per_1m_tokens": 0.7,
+  "output_cad_per_1m_tokens": 2.8,
+  "tool_call_cad": 0.0014
+}

@@ -1,0 +1,52 @@
+BACAB AI | SPRINT 2.5 — TRACE-BASED RECOVERY JOURNEY VISUAL
+============================================================
+FULL REPLACEMENT PROJECT: SHARED + PLAN A + PLAN B are preserved.
+
+SECURITY
+  Scan the ZIP with Microsoft Defender and extract to a NEW directory.
+  Do not disable Windows Smart App Control or Defender.
+  No .bat/.ps1 scripts, executables, or stored API keys are supplied.
+
+INSTALL AND LAUNCH FROM THE NEW bacab_mvp DIRECTORY
+  Stop the old Streamlit server with Ctrl+C.
+  In File Explorer, open bacab_mvp, type powershell in the address bar.
+  Run each command individually:
+
+  & "$env:LOCALAPPDATA\Python\pythoncore-3.12-64\python.exe" -m venv .venv
+  .\.venv\Scripts\python.exe -m pip install -r requirements-live.txt
+  .\.venv\Scripts\python.exe -m pytest -q
+
+  Expected: 89 passed (offline only, no paid API calls).
+
+  .\.venv\Scripts\python.exe -m streamlit run app.py
+
+  Open http://127.0.0.1:8501
+
+NO-COST ACCEPTANCE CHECKS
+  1. Select SHARED and Scenario A. Run BACAB audit.
+     Scroll below the "Journey comparison" area to
+     "Recovery journey · trace-based visual".
+     Baseline: two failed authentication attempts followed by human handoff.
+     Stress: four failed authentication attempts (two excess) and unresolved.
+  2. Change the A retry slider to 2 and rerun. The visual must show SIX
+     failed stress attempts, with four beyond policy.
+  3. SHARED -> B. Baseline ends completed; stress shows unusable verification
+     offers and unresolved. No authentication API outage should appear in B.
+  4. SHARED -> C. Baseline English handoff and French stress unresolved.
+  5. PLAN B Saved Trace Replay -> A. Visual should reflect replayed events.
+  6. Expand "Inspect events behind the journey visual" to see event IDs,
+     tool call IDs, and initiator provenance for the visual steps.
+  7. Cost analysis, traces, policy findings, reviews, and exports should work
+     exactly as in Sprint 2.4.
+
+OPTIONAL PLAN A (PAID)
+  Perform only after the no-cost checks. A live model can take different
+  valid paths; the visual shows the actual trace, never a predetermined demo.
+  Use a valid restricted BACAB project key. Never share it in screenshots.
+  Stop on HTTP 401/429 rather than triggering repeated paid attempts.
+
+NOTES
+  * The visual summarizes recorded tool results and controller transitions.
+    It is NOT a second evaluator and does not disclose hidden model reasoning.
+  * Legacy saved audits still show their original recorded steps.
+  * No live OpenAI provider or real Windows browser test was run by the author.

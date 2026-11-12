@@ -1,0 +1,31 @@
+BACAB AI | SPRINT 2.2 (PLAN A DISPLAY-IDENTITY PATCH)
+=====================================================
+KEEP your previous Sprint 2.1 folder as backup.
+The new package has NO .bat or .ps1 launch scripts. Do not disable Smart App Control.
+
+1. Download this ZIP. Scan with Microsoft Defender, extract separately.
+2. Stop previous Streamlit with Ctrl+C in its PowerShell window.
+3. In File Explorer, open this extracted bacab_mvp folder; click the address
+   bar, type powershell, then press Enter.
+4. Run the following commands one at a time:
+
+& "$env:LOCALAPPDATA\Python\pythoncore-3.12-64\python.exe" -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-live.txt
+.\.venv\Scripts\python.exe -m pytest -q
+
+EXPECTED: 56 passed.
+
+5. Launch:
+
+.\.venv\Scripts\python.exe -m streamlit run app.py
+
+6. Open http://127.0.0.1:8501
+
+FIRST test without API charges: SHARED B, press Run. Select C without
+pressing Run; old B result should DISAPPEAR. Then select PLAN A B and run
+only when ready and after authorizing charges. It should show REPORT IDENTITY
+scenario B source=live_openai, or a clear incomplete-run error instead of an
+old C report. API calls can consume credits even if a run does not finish.
+
+If errors occur, copy only the safe red on-page diagnostic. Do not share
+any OpenAI API key, .env file, or screenshots with the secret field visible.

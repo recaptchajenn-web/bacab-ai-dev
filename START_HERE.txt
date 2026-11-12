@@ -1,0 +1,24 @@
+CURRENT RELEASE (security-reviewed demo): Sprint 2.7.1. START WITH START_SPRINT271_WINDOWS.txt.
+
+BACAB AI — START HERE (SPRINT 2.7 CURRENT RELEASE)
+
+Read START_SPRINT27_WINDOWS.txt for installation and NO-COST validation.
+
+Full replacement project: SHARED simulation, PLAN A live LLM and PLAN B
+bundled/JSON replay. Keep your working Sprint 2.5 folder as a backup.
+No batch, PowerShell scripts, executables, personal API keys or SQLite audits.
+
+129 offline tests passed, including the Windows UTF-8 test correction.
+
+What is new: plain-language outcome comparisons, accurate imported-live
+recorded timing labels, readable hypothetical pricing assumptions, customer
+action-request terminology, careful potential recovery-equity/operational
+warnings, and friendly rule names alongside exact technical policy IDs.
+
+No new API calls are required to verify this release. Import your existing
+PLAN A JSON audits through PLAN B to check the updated presentation.
+
+See docs/SPRINT27_RELEASE_NOTES.md for details and limitations.
+
+Sprint 2.7: See Windows start guide for new bordered comparison KPI,
+recorded workflow duration, and number-first customer burden wording.

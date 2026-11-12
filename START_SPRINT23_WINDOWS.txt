@@ -1,0 +1,23 @@
+BACAB AI | SPRINT 2.3 — SCENARIO VALIDATION + HTTP 401 GUIDANCE
+==============================================================
+
+1. Do not repeatedly call paid API during HTTP 401 troubleshooting.
+2. Keep your previous sprint folders as backups. Scan this ZIP with Microsoft Defender.
+3. Extract to a NEW folder. Stop old Streamlit in its own PowerShell with Ctrl+C.
+4. Open PowerShell in the new bacab_mvp directory. Execute:
+
+& "$env:LOCALAPPDATA\Python\pythoncore-3.12-64\python.exe" -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-live.txt
+.\.venv\Scripts\python.exe -m pytest -q
+.\.venv\Scripts\python.exe -m streamlit run app.py
+
+5. Test offline first: select SHARED A, set retries to 1, then select SHARED C.
+   C must not trigger additional-retry ValueError. B should also work normally.
+6. For PLAN A, verify the active BACAB project key at
+   https://platform.openai.com/api-keys. Replace any revoked/exposed key.
+   Restrict its permission to Model capabilities > Responses Request/Write.
+   Paste the active replacement only in the BACAB masked sidebar field.
+7. Only after your key is confirmed, authorize ONE paid PLAN A Control test.
+   If HTTP 401 persists, stop and check the key/project with OpenAI support.
+
+Never post keys, the .env file, or screenshots exposing the secret.

@@ -1,0 +1,48 @@
+BACAB AI | SPRINT 2.7 — THREE DASHBOARD KPI REFINEMENTS
+========================================================
+Full replacement project (SHARED / PLAN A / PLAN B). Presentation-only update.
+
+SECURITY / BACKUP
+  Keep Microsoft Defender ON; scan ZIP before extracting.
+  Extract to a NEW directory. Preserve Sprint 2.6 and its SQLite saved history.
+  No .bat, .ps1, executable files, API keys or user audit databases included.
+  Stop any running earlier Streamlit instance with Ctrl+C before starting 2.7.
+
+OPEN POWERSHELL INSIDE THE EXTRACTED bacab_mvp FOLDER
+  Open File Explorer, enter the new bacab_mvp folder, type powershell in the
+  Explorer address bar and press Enter. Run each command separately:
+
+  & "$env:LOCALAPPDATA\Python\pythoncore-3.12-64\python.exe" -m venv .venv
+  .\.venv\Scripts\python.exe -m pip install -r requirements-live.txt
+  .\.venv\Scripts\python.exe -m pytest -q
+
+EXPECTED: 129 passed (no API calls).
+
+LAUNCH
+  .\.venv\Scripts\python.exe -m streamlit run app.py
+  Open the localhost URL displayed (normally http://127.0.0.1:8501).
+
+CHECK THESE THREE ITEMS FIRST — NO API CHARGES
+  1. Execution mode SHARED -> Scenario A -> Run BACAB audit.
+     In Overview / Recovery outcomes: all three KPI cards have matching
+     white border/box styling. The third reads:
+           Recovery outcome comparison
+           Baseline       Stress
+           SAFE     |     UNRESOLVED
+     Baseline/Stress smaller, outcome words large and bold.
+
+  2. Key differences: the time KPI says "Recorded workflow duration".
+     NOTE: These SHARED durations are recorded simulated timings, not real
+     customer waits. Imported live evidence uses "Recorded model/tool duration".
+
+  3. Customer recovery burden: first line has number first:
+           +0 difference in customer action requests
+
+  Optional: Import original PLAN A JSON in PLAN B (offline) and verify original
+  pair IDs, costs and findings are still preserved.
+
+NOT CHANGED
+  Synthetic policy, cost assumptions, recovery metrics, model behavior,
+  trace/event schema, human review, security and findings; no autonomous fixes.
+
+SEE: docs/SPRINT27_RELEASE_NOTES.md

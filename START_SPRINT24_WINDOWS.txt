@@ -1,0 +1,52 @@
+BACAB AI | SPRINT 2.4 — SCENARIO A BASELINE GUARD & TRACE PROVENANCE
+==================================================================
+Current release: full replacement project (SHARED / PLAN A / PLAN B).
+
+SECURITY
+  Keep Microsoft Defender and Windows Smart App Control enabled.
+  Scan ZIP and extracted folder. Do not execute files as Administrator.
+  Never share API keys, including through screenshots. No .bat/.ps1 installers.
+  The OpenAI SDK is optional for offline testing; billing remains separate.
+
+INSTALL IN A NEW FOLDER
+  1. Stop the old Streamlit terminal with Ctrl+C.
+  2. Open PowerShell inside the NEW extracted bacab_mvp directory.
+  3. Run each command separately:
+
+  & "$env:LOCALAPPDATA\Python\pythoncore-3.12-64\python.exe" -m venv .venv
+  .\.venv\Scripts\python.exe -m pip install -r requirements-live.txt
+  .\.venv\Scripts\python.exe -m pytest -q
+
+  Expected: 77 passed (offline tests, no API calls or charges).
+
+  .\.venv\Scripts\python.exe -m streamlit run app.py
+
+  Open http://127.0.0.1:8501 and do a SHARED control test first.
+
+SUGGESTED NO-COST ACCEPTANCE TEST
+  - SHARED -> Scenario A -> Run. Baseline: two failed auth attempts,
+    approved human handoff; stress: four attempts, unresolved.
+  - SHARED -> B and C -> Run; prior behaviors must remain intact.
+  - Cost Analysis -> open Baseline and Stress flagged-cost breakdowns.
+  - Execution Traces -> check initiated_by and tool_call_id.
+  - Human Review & Export -> download CSV and verify provenance columns.
+  - PLAN B Saved Replay -> repeat Scenario A; the new bundled fixture
+    should produce the same counts as SHARED.
+
+OPTIONAL PLAN A PAID TEST (ONE RUN ONLY)
+  - Use an ACTIVE restricted BACAB OpenAI project API key with Responses access.
+    Never paste it in ChatGPT, GitHub, screenshots or a file to share.
+  - Select PLAN A -> Scenario A, slider 1, authorize API usage, then run.
+  - If the agent starts verification, baseline is guarded after at most two
+    auth failures; the controller injects five attempts into the stress path.
+  - If the trigger is not reached, BACAB reports that fault did not activate.
+  - Check report identity source=live_openai and inspect evidence.
+  - Stop repeated paid runs on 401 or 429; troubleshoot credentials/quota.
+
+NOTES
+  - The policy guard is part of the FICTIONAL BANKING SUBJECT WORKFLOW,
+    not a BACAB intervention. Stress fault originates in a faulty controller.
+  - CAD are illustrative rates, not provider billing or savings.
+  - Old saved audits remain historical; they are not silently recomputed.
+  - Browser rendering and real paid API behavior require Windows validation.
+  - New CSV exports include call IDs, initiators and policy references.

@@ -1,0 +1,18 @@
+[server]
+# Deployment copy: no fixed server.address so Streamlit Community Cloud can bind.
+# For local runs, bind to localhost explicitly:
+#   python -m streamlit run app.py --server.address 127.0.0.1
+headless = true
+# UI cap complements the 2 MB replay parser guard.
+maxUploadSize = 3
+fileWatcherType = "none"
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+base = "light"
+primaryColor = "#6647D6"
+backgroundColor = "#F5F6FA"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#161D34"

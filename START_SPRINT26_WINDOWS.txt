@@ -1,0 +1,62 @@
+BACAB AI | SPRINT 2.6 — FINAL DASHBOARD STABILIZATION
+====================================================
+Complete replacement: SHARED simulation + PLAN A live agent + PLAN B replay.
+This release changes UX, safety messaging, policy presentation and test encoding.
+It does NOT change banking tools, audit mathematics or provider pricing.
+
+SECURITY
+  Keep Microsoft Defender and Smart App Control ON. Scan the downloaded ZIP.
+  Extract into a NEW directory; keep your working Sprint 2.5 installation as backup.
+  No .bat, .ps1, executables, user API keys or saved audit database included.
+  Stop any previous Streamlit process with Ctrl+C before launching this one.
+
+OPEN POWERSHELL INSIDE THE NEW bacab_mvp FOLDER
+  Open File Explorer; go to bacab_mvp; type powershell in the address bar.
+  Run each command individually:
+
+  & "$env:LOCALAPPDATA\Python\pythoncore-3.12-64\python.exe" -m venv .venv
+  .\.venv\Scripts\python.exe -m pip install -r requirements-live.txt
+  .\.venv\Scripts\python.exe -m pytest -q
+
+EXPECTED OFFLINE TEST RESULT: 115 passed (no OpenAI API calls).
+
+LAUNCH THE DASHBOARD
+  .\.venv\Scripts\python.exe -m streamlit run app.py
+  Open the local address Streamlit displays (normally http://127.0.0.1:8501).
+
+OFFLINE ACCEPTANCE CHECKS — DO NOT SPEND API CREDITS
+  1. SHARED -> A -> Run. Overview displays Recovery outcome comparison:
+     Baseline: Safe; Stress: Unresolved. Warning is OPERATIONAL RESILIENCE,
+     NOT demographic unfairness. Stress flagged cost is evidence-linked.
+  2. Findings & policy -> policy IDs display friendly names AND the original
+     IDs in parentheses, e.g. Usable Alternative Recovery Required
+     (ACCESSIBLE_FALLBACK_REQUIRED).
+  3. Cost analysis -> expand 'How costs are calculated'. Verify readable CAD
+     $0.70 per 1M input tokens; $2.80 per 1M output tokens; $0.00140 per tool
+     execution. Raw JSON remains under Advanced if needed.
+  4. SHARED -> B and C -> Run separately. Concern should say POTENTIAL
+     ACCESSIBILITY / LANGUAGE-RELATED RECOVERY EQUITY; human investigation
+     required. Even zero extra customer action requests does not imply equal
+     recoverability. Do not interpret as proven population bias.
+  5. PLAN B -> Saved trace replay -> A: duration labeled Simulated duration.
+  6. PLAN B -> Import trace JSON -> upload your previously exported PLAN A
+     bacab_technical_outage_audit.json. Run. Duration labeled Recorded
+     model/tool duration despite mode being trace_replay. Repeat B/C if useful.
+     No OpenAI key needed and no paid calls made.
+  7. Export JSON/CSV and compare audit metrics, evidence IDs and costs.
+
+PAID PLAN A ALREADY VALIDATED IN SPRINT 2.5
+  Do not rerun unless a specific defect appears. If re-testing later,
+  use a restricted project API key, check the billing-consent box, and stop
+  on 401/429. Never paste a real API key into ChatGPT or screenshots.
+
+NOTES
+  * Previous SQLite saved history is not copied into this new extracted folder.
+    Keep the previous directory; existing JSON audits can be imported in PLAN B.
+  * The current dashboard only recommends corrections; it does NOT deploy fixes.
+  * This package passed offline tests and clean ZIP extraction but could not be
+    browser-rendered on Windows or call live OpenAI during packaging.
+  * A JSON import must use a complete BACAB audit JSON with paired 'runs';
+    a standalone CSV is not accepted by PLAN B import.
+
+DETAILS: docs/SPRINT26_RELEASE_NOTES.md

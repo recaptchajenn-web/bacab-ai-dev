@@ -1,0 +1,49 @@
+BACAB AI | SPRINT 2.7.1 — SECURITY / RELIABILITY HOTFIX
+==========================================================
+This is a narrow security fix to the accepted Sprint 2.7 dashboard.
+The visuals and scenarios remain unchanged; no paid model calls are needed.
+
+IMPORTANT: BACK UP BEFORE INSTALLING
+1. Stop existing BACAB Streamlit console with Ctrl+C.
+2. Keep the working Sprint 2.7 ZIP and your downloaded audit JSON/CSV files.
+3. Extract Sprint 2.7.1 to a NEW folder (do not overwrite Sprint 2.7).
+4. Optional: to retain existing Saved History, after closing the old app,
+   copy the OLD folder's `bacab_mvp/data/bacab.sqlite3` to the NEW folder's
+   `bacab_mvp/data/bacab.sqlite3` (create `data` folder first). Do not copy
+   `data` while a Streamlit process is writing to the database.
+   The old DB schema remains compatible. Previously overwritten rows cannot
+   be restored automatically; retain original exported audit JSON as backup.
+
+OPEN POWERSHELL INSIDE THE NEW bacab_mvp DIRECTORY:
+  & "$env:LOCALAPPDATA\Python\pythoncore-3.12-64\python.exe" -m venv .venv
+  .\.venv\Scripts\python.exe -m pip install -r requirements-live.txt
+  .\.venv\Scripts\python.exe -m pytest -q
+
+EXPECTED: 138 passed (no OpenAI API usage)
+
+START:
+  .\.venv\Scripts\python.exe -m streamlit run app.py
+
+LOCAL SMOKE TEST (NO API COST):
+1. SHARED > Scenario A: run and inspect the normal KPI and findings.
+2. PLAN B > Import trace JSON: import your previously downloaded
+   bacab_technical_outage_audit.json and inspect results.
+3. Saved History: when original and replay of the same pair are both stored,
+   both entries remain separately accessible (including review decisions).
+4. Try a malformed JSON upload if desired: it should show a validation error,
+   not a paid call, and no old report should appear as a new result.
+
+CHANGELOG:
+- Protect separate evaluation snapshots from overwrite when a trace is replayed.
+- Scope human reviews to the corresponding saved evaluation, not just pair ID.
+- Reject unsupported policy-version and non-finite numeric values on import.
+- CSV export escapes potentially executable spreadsheet-formula cells.
+- Explicit warning: a structurally valid trace is not authenticated evidence.
+
+SECURITY:
+- Run on localhost only; don't expose this Streamlit server publicly.
+- No real bank accounts / customer data / OTP content.
+- No secrets in screenshots, chat, GitHub, or exports.
+- Input token rates, tool cost and CAD results are hypothetical.
+
+FULL REVIEW: docs/SPRINT271_SECURITY_REVIEW.md

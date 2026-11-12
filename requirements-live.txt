@@ -1,0 +1,4 @@
+# Optional PLAN A only. SHARED/PLAN B do not require the OpenAI SDK.
+# API calls are billed separately from ChatGPT subscriptions.
+-r requirements-dev.txt
+openai>=2.0,<3
