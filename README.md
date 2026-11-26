@@ -1,7 +1,10 @@
 > **Public hackathon demo build.** PLAN A live LLM execution is disabled; Scenarios A, B, C via controlled simulation and validated trace replay remain available. See [DEPLOYMENT.md](DEPLOYMENT.md).
-> Copyright © 2026 JessicaLelodeLarrea. All rights reserved under the terms of the applicable licence.
+
 > **Live demo online see here https://bacab-ai-demo.streamlit.app/**
+
 > Presentation: https://github.com/recaptchajenn-web/bacab-ai-dev/blob/main/BACAB_AI_Hackathon_Presentation_Team34_Final_PRESENTED.pdf
+
+> Copyright © 2026 JessicaLelodeLarrea. Bacab AI All rights reserved under the terms of the applicable licence.
 
 
 > **Sprint 2.7.1 security hotfix (2026-11-09):** Preserves distinct history records and human reviews when re-evaluating a trace with the same pair ID; rejects non-finite imported costs and mismatched policy versions; escapes spreadsheet formulas in CSV exports; discloses imported-trace authenticity limits. **138 offline tests passed.** See `START_SPRINT271_WINDOWS.txt` and `docs/SPRINT271_SECURITY_REVIEW.md`. No change to audit calculations or the accepted KPI layout.
