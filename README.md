@@ -1,4 +1,7 @@
 > **Public hackathon demo build.** PLAN A live LLM execution is disabled; Scenarios A, B, C via controlled simulation and validated trace replay remain available. See [DEPLOYMENT.md](DEPLOYMENT.md).
+> Copyright © 2026 JessicaLelodeLarrea. All rights reserved under the terms of the applicable licence.
+> **Live demo online see here https://bacab-ai-demo.streamlit.app/ **
+
 
 > **Sprint 2.7.1 security hotfix (2026-11-09):** Preserves distinct history records and human reviews when re-evaluating a trace with the same pair ID; rejects non-finite imported costs and mismatched policy versions; escapes spreadsheet formulas in CSV exports; discloses imported-trace authenticity limits. **138 offline tests passed.** See `START_SPRINT271_WINDOWS.txt` and `docs/SPRINT271_SECURITY_REVIEW.md`. No change to audit calculations or the accepted KPI layout.
 
@@ -136,3 +139,22 @@ See [`START_HERE.txt`](START_HERE.txt) and [`docs/SPRINT2_RELEASE_NOTES.md`](doc
 ## Sprint 2.1 — Sidebar accessibility and controlled Plan A retries
 
 Read `docs/SPRINT21_RELEASE_NOTES.md`. Compared with Sprint 2, the selector and alerts have high-contrast colors, and the `Additional authentication retries` control is enabled in both SHARED and PLAN A for Scenario A. In PLAN A a **deliberately defective Python retry controller** makes 4+N auth attempts after a live model-selected verification request and prevents approved handoff. The extra attempts are **not** model decisions; the trace records `initiated_by=faulty_retry_controller`. If no triggering verification request is made, the dashboard reports that the injected fault did **not** activate. All original modes and fixtures remain available.
+
+## Attribution and Citation
+
+If you use, adapt, distribute, or build upon this project,
+please acknowledge the original creator.
+
+**Original creator:** JessicaLelodeLarrea  
+**Project:** [Your Project Name]  
+**GitHub:** [Repository URL]
+
+For academic publications, technical reports, presentations,
+or derivative projects, please cite this repository.
+
+
+
+## Copyright
+
+Copyright © 2026 Jessica Lelo de Larrea.
+All rights reserved under the terms of the project's licence.
